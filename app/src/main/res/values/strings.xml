@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Toronto Landmarks</string>
+    <string name="landmark_name">Landmark Name</string>
+    <string name="landmark_address">Landmark Address</string>
+    <string name="image_description">An image of Toronto skyline</string>
+    <string name="search_btn">Search Toronto Landmarks</string>
+
+    <string-array name="landmark_types">
+        <item>Old Buildings</item>
+        <item>Museums</item>
+        <item>Stadiums</item>
+        <item>Attractions</item>
+    </string-array>
+</resources>
