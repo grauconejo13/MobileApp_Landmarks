@@ -19,9 +19,9 @@
 
         <activity
             android:name=".MapActivity"
-            android:exported="false" /> <!-- here contain the Google Map API -->
+            android:exported="false" />
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
+            android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
         <activity
