@@ -16,7 +16,7 @@ The app uses Android XML layouts, RecyclerView, and the Maps SDK for Android. Th
 
    Git ignores `local.properties`. You can build and browse the catalog without a key. Map tiles require a valid key and an internet connection.
 
-From the repo root, build the debug APK and run the existing local tests:
+From the repo root, build the debug APK and run the local catalog regression tests:
 
 ```sh
 ./gradlew :app:assembleDebug :app:testDebugUnitTest
@@ -28,4 +28,4 @@ On Windows, use `gradlew.bat` in place of `./gradlew`.
 
 Open the app, choose **Attractions**, and tap **CN Tower**. Confirm that the map loads and the marker identifies the CN Tower. Press Back to return to the landmark list.
 
-See [Architecture](docs/architecture.md) for the screen flow and source locations.
+See [Architecture](docs/architecture.md) for the screen flow and source locations. The unit tests also guard the bundled catalog against duplicate landmark names, invalid coordinates, missing required fields, non-HTTPS image URLs, and accidental breakage of the documented CN Tower demo path.

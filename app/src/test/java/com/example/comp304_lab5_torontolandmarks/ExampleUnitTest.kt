@@ -1,17 +1,47 @@
 package com.example.comp304_lab5_torontolandmarks
 
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
-import org.junit.Assert.*
+class LandmarkCatalogTest {
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun catalog_hasUniqueNamesAndValidCoordinates() {
+        val landmarks = Landmarks.LANDMARKS
+
+        assertTrue("Catalog should not be empty", landmarks.isNotEmpty())
+        assertEquals(
+            "Landmark names should be unique",
+            landmarks.size,
+            landmarks.map { it.name }.distinct().size
+        )
+
+        landmarks.forEach { landmark ->
+            assertTrue("${landmark.name} latitude is out of range", landmark.lat in -90.0..90.0)
+            assertTrue("${landmark.name} longitude is out of range", landmark.long in -180.0..180.0)
+        }
+    }
+
+    @Test
+    fun catalog_entriesHaveRequiredPortfolioFields() {
+        Landmarks.LANDMARKS.forEach { landmark ->
+            assertTrue("${landmark.name} needs a type", landmark.type.isNotBlank())
+            assertTrue("${landmark.name} needs an address", landmark.address.isNotBlank())
+            assertTrue(
+                "${landmark.name} image should use HTTPS",
+                landmark.image.startsWith("https://")
+            )
+        }
+    }
+
+    @Test
+    fun demoPath_containsCnTowerInAttractions() {
+        val attractions = Landmarks.LANDMARKS.filter { it.type == "Attractions" }
+
+        assertTrue(
+            "README demo path expects CN Tower in Attractions",
+            attractions.any { it.name == "CN Tower" }
+        )
     }
 }
