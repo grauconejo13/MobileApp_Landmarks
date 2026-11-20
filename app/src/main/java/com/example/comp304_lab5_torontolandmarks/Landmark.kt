@@ -11,6 +11,8 @@ data class Landmark(
     val image: String):Serializable
 
 object Landmarks {
+    val TYPES = listOf("Old Building", "Attractions", "Museum", "Stadium")
+
     val LANDMARKS = listOf(
         Landmark(
             name = "Casa Loma",

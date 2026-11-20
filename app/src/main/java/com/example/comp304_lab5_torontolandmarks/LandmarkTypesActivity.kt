@@ -13,7 +13,7 @@ class LandmarkTypesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landmark_types)
 
-        val landmarkTypes = listOf("Old Building", "Attractions", "Museum", "Stadium")
+        val landmarkTypes = Landmarks.TYPES
 
         val landmarkTypeListView = findViewById<ListView>(R.id.landmarkTypeListView)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, landmarkTypes)

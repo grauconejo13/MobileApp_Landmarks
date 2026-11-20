@@ -36,6 +36,31 @@ class LandmarkCatalogTest {
     }
 
     @Test
+    fun navigationCategories_matchCatalogAndRemainPopulated() {
+        val categories = Landmarks.TYPES
+        val catalogTypes = Landmarks.LANDMARKS.map { it.type }.toSet()
+
+        assertTrue("Navigation categories should not be empty", categories.isNotEmpty())
+        assertEquals(
+            "Navigation categories should be unique",
+            categories.size,
+            categories.distinct().size
+        )
+        assertEquals(
+            "Every catalog type should be reachable from the category screen",
+            catalogTypes,
+            categories.toSet()
+        )
+
+        categories.forEach { category ->
+            assertTrue(
+                "$category should open a non-empty landmark list",
+                Landmarks.LANDMARKS.any { it.type == category }
+            )
+        }
+    }
+
+    @Test
     fun demoPath_containsCnTowerInAttractions() {
         val attractions = Landmarks.LANDMARKS.filter { it.type == "Attractions" }
 
